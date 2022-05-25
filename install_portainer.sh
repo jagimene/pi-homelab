@@ -18,4 +18,4 @@ function check_internet() {
 check_internet
 
 cd "portainer"
-docker compose up -d portainer/portainer-ce:latest || error "Failed to create and run Portainer docker image!"
+docker compose up -d  || error "Failed to create and run Portainer docker image!"
