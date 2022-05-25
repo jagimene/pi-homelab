@@ -1,0 +1,28 @@
+version: "3.3"
+
+services:
+  adguard:
+    container_name: adguard
+    image: adguard/adguardhome:latest
+    mac_address: ${MAC_ADDRESS} #00:00:00:00:00:00
+    cap_add:
+      - NET_ADMIN
+    networks:
+      macvlan_net:                    
+        ipv4_address: ${IPV4_ADDRESS}
+    volumes:
+      - /srv/adguard/config/workdir:/opt/adguardhome/work
+      - /srv/adguard/config/confdir:/opt/adguardhome/conf
+    restart: unless-stopped
+
+
+networks:
+  macvlan_net:
+    driver: macvlan
+    driver_opts:
+      parent: ${NIC}            #ifconfig
+    ipam:
+      config:
+        - subnet: ${SUBNET}     #192.168.1.0/24            
+          gateway: ${GATEWAY}   #192.168.1.1              
+          ip_range: ${IP_RANGE} #192.168.1.2/28    
