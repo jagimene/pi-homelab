@@ -1,0 +1,21 @@
+version: '3'
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    volumes:
+      - /docker/homeassistant/config:/config
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+    privileged: true    
+    networks:
+      - npm-network
+
+  node-red:
+    image: nodered/node-red:latest
+    environment:
+      - TZ=Europe/Amsterdam    
+    volumes:
+      - /docker/nodered/data:/data
+    networks:
+      - npm-network
