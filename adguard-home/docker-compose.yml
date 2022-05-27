@@ -4,7 +4,7 @@ services:
   adguard:
     container_name: adguard
     image: adguard/adguardhome:latest
-    mac_address: ${MAC_ADDRESS} #00:00:00:00:00:00
+    mac_address: ${MAC_ADDRESS} #00:00:00:00:00:00 random not in use in the network
     cap_add:
       - NET_ADMIN
     networks:
