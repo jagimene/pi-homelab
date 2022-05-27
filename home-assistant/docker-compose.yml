@@ -6,6 +6,10 @@ services:
     volumes:
       - /docker/homeassistant/config:/config
       - /etc/localtime:/etc/localtime:ro
+      - /dev/serial/by-id/:/dev/serial/by-id #usb devices
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+      - /dev/ttyUSB1:/dev/ttyUSB1
     restart: unless-stopped
     privileged: true    
     networks:
