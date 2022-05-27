@@ -19,3 +19,6 @@ services:
       - /docker/nodered/data:/data
     networks:
       - npm-network
+networks:
+  npm-network:
+    external: true
