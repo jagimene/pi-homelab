@@ -8,28 +8,11 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /dev/serial/by-id/:/dev/serial/by-id #usb devices
     devices:
-      - /dev/ttyUSB0:/dev/ttyUSB0
-      - /dev/ttyUSB1:/dev/ttyUSB1
+      - /dev/zigbee:/dev/ttyUSB0      
     restart: unless-stopped
     privileged: true    
     networks:
       - npm-network
-
-  zigbee2mqtt:
-    container_name: zigbee2mqtt
-    image: koenkk/zigbee2mqtt
-    restart: unless-stopped
-    volumes:
-      - ./data:/app/data
-      - /run/udev:/run/udev:ro
-    environment:
-      - TZ=America/Argentina/Buenos_Aires
-    devices:
-      # Make sure this matched your adapter location
-      - /dev/ttyUSB0:/dev/ttyACM0
-    networks:
-      - npm-network
-
   node-red:
     image: nodered/node-red:latest
     environment:
