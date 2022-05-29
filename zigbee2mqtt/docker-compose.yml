@@ -1,0 +1,20 @@
+version: '3'
+services:  
+  zigbee2mqtt:
+    container_name: zigbee2mqtt
+    image: koenkk/zigbee2mqtt
+    restart: unless-stopped
+    volumes:
+      - /docker/zigbee2mqtt/data:/app/data
+      - /run/udev:/run/udev:ro
+    environment:
+      - TZ=America/Argentina/Buenos_Aires
+    devices:
+      # Make sure this matched your adapter location
+      - /dev/zigbee:/dev/ttyUSB0
+    networks:
+      - npm-network
+
+networks:
+  npm-network:
+    external: true
