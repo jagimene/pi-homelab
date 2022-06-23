@@ -15,6 +15,20 @@ services:
     networks:
       - npm-network
 
+  mqtt:
+    container_name: mosquitto
+    image: eclipse-mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - /docker/mosquitto/config:/mosquitto/config
+      - /docker/mosquitto/logs:/mosquitto/log
+      - /docker/mosquitto/data:/mosquitto/data
+    restart: always
+    environment:
+      - TZ=Europe/Madrid 
+
 networks:
   npm-network:
     external: true
