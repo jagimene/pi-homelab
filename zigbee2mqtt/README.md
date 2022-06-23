@@ -1,3 +1,26 @@
+## Mosquitto
+* First load /docker/mosquitto/config/mosquitto.conf file with auth disable 
+```
+persistence true
+persistence_location /mosquitto/data/
+log_dest file /mosquitto/logs/mosquitto.log
+listener 1883
+allow_anonymous true
+```   
+
+* Within the container run create_password.sh  
+* Enable auth in config file 
+```
+persistence true
+persistence_location /mosquitto/data/
+log_dest file /mosquitto/logs/mosquitto.log
+password_file /mosquitto/config/mosquitto.passwd
+listener 1883
+allow_anonymous false
+```
+* Intregate in HomeAssistant
+
+
 ## Zigbee2MQTT  
 
 #### Set Persistent Name for the Adapter  
