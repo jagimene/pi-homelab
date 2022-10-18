@@ -1,0 +1,23 @@
+version: '3'
+services:  
+  octoprint:
+    container_name: octoprint
+    image:  octoprint/octoprint
+    restart: unless-stopped
+    volumes:
+      - /docker/octoprint:/octoprint
+    devices:
+      # Make sure this matched your adapter location
+      - /dev/ender3pro:/dev/ttyACM0
+      #  - /dev/video0:/dev/video0
+    environment:
+      - TZ=America/Argentina/Buenos_Aires
+      # uncomment the lines below to ensure camera streaming is enabled when
+      # you add a video device
+      #  - ENABLE_MJPG_STREAMER=true
+    networks:
+      - npm-network
+
+networks:
+  npm-network:
+    external: true
