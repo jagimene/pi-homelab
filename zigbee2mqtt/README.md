@@ -50,3 +50,7 @@ Reboot the Pi: `sudo reboot`
 To test, unplug the adapter and plug it back. Then execute this: `ls -l /dev/zigbee`. It should show this result…
 
     lrwxrwxrwx 1 root root 7 Mar 30 11:28 /dev/zigbee -> ttyUSB0
+
+
+* Load configuration.yaml to /docker/zigbee2mqtt/data
+* Configure server, user and pass for mosquitto 

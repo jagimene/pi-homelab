@@ -27,7 +27,7 @@ services:
       - /docker/mosquitto/data:/mosquitto/data
     restart: always
     environment:
-      - TZ=Europe/Madrid
+      -  TZ=America/Argentina/Buenos_Aires
     networks:
       - npm-network
 
