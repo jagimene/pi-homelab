@@ -2,7 +2,7 @@ version: '3'
 services:  
   octoprint:
     container_name: octoprint
-    image:  octoprint/octoprint
+    image:  octoprint/octoprint:latest
     restart: unless-stopped
     volumes:
       - /docker/octoprint:/octoprint
